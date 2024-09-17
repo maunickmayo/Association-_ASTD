@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un membre{% endblock %}
+
+{% block body %}
+          <div class="container-fluid mb-5">
+           <div class="row">
+             <h1 class="my-4 text-center">Modifier un membre</h1>
+             
+             {{ form_start(form, {'attr': {'class': 'col-6 mx-auto'}}) }}   
+            <div class="row">
+                <div class="col-6"> {{ form_row(form.firstname) }} </div>
+                <div class="col-6"> {{ form_row(form.lastname) }} </div>
+            </div> 
+             <div class="row">
+                <div class="col-6"> {{ form_row(form.email) }} </div>
+                 <div class="col-6"> {{ form_row(form.phone) }} </div>
+             </div>
+              
+               {{ form_row(form.numberstreet) }} 
+               {{ form_row(form.zipcode) }} 
+               {{ form_row(form.adress) }} 
+               {{ form_row(form.city) }} 
+               {{ form_row(form.country) }} 
+               
+              {{ form_end(form) }}   
+      </div>
+</div>
+{% endblock %}
+

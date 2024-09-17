@@ -1,0 +1,49 @@
+{%  extends 'base_admin.html.twig' %}
+ 
+{% block title %}Espace Admin{% endblock %} 
+
+{% block body %} 
+
+     {# . -------------side bar------------------
+                 </div>
+                 <div class="sidenav shadow-1 white" id="example-sidenav" data-ax="sidenav">
+  <div class="sidenav-header">
+    <img class="img w-20 h-20" src="{{ asset('uploads/images/logo.astd.jpg') }}}}" alt="img" />
+  </div>
+  <a href="#" class="sidenav-link active">Link 1</a>
+  <a href="#" class="sidenav-link">Link 2</a>
+  <a href="#" class="sidenav-link">Link 3</a>
+  <a href="#" class="sidenav-link">Link 4</a>
+  <div class="sidenav-footer cyan light-1">
+    This is a footer
+  </div>
+</div>
+
+<button data-target="example-sidenav" class="btn rounded-1 btn-press primary">Open sidenav</button>#}
+       
+<div class="container-fluid">
+             <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 text-center my-5">
+                      <h3 class="fs-5"> Bonjour  <strong class="text-warning"> {{ app.user.firstname }}  {{ app.user.lastname }} <img src="{{ asset('images/hello.png') }}"  class=""></strong> et bienvenue sur votre espace admin </h3>
+                </div>
+             </div>
+
+             <div class="row justify-content-center">
+                  <div class="col-lg-12 col-md-9 col-12 text-center ">
+                        <h2 class="py-2 btn-info"> <i class="fa fa-home  btn btn-info fs-2"></i>Tableau de bord</h2> 
+                  </div>
+             </div>
+                      
+            <div class="row my-3">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-2 d-flex justify-content-center my-3 ">
+                         <h2><a href="{{ path('users_list') }}" class="text-header fw-bold"><i class="fa-solid fa-list mx-1"></i>Liste des membres</a></h2>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-2 d-flex justify-content-center"> 
+                      <h2><a href="{{ path('articles_list') }}" class="text-header fw-bold"><i class="fa fa-flag"></i> Tous les articles</a></h2> 
+                    </div> {#  
+                  {#    <div class="col-lg-12 col-md-6 col-sm-12 col-12 my-2"> <h2><a href="{{ path('category_list') }}"><i class="fa fa-tags"></i> Toutes les catégories</a></h2> </div>
+                 {#  <div class="col-lg-12 col-md-6 col-sm-12 col-12 my-2">  <h2><a href="{{  path('caroussel_list')  }}"><i class="fa fa-list"></i> Voir le Slider (Caroussel)</a></h2> </div>#}     
+            </div>             
+ </div>              
+     
+{% endblock %}

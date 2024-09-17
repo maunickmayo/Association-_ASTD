@@ -1,0 +1,330 @@
+* {
+     margin: 0;
+     padding: 0;
+     text-decoration: none;
+     list-style: none;
+     font-family:'Oswald',Helvetica,Arial,Lucida,sans-serif;  
+  }
+
+
+body{
+     background-color: rgba(230, 222, 211, 0.063)!important;    
+}
+
+
+ h1, h2, h3, h4, h5, h6 {
+     font-family: 'Oswald',Helvetica,Arial,Lucida,sans-serif;
+ } 
+
+
+ /*---------------- header-----------*/
+ .headernav{
+      background-color:rgb(255, 255, 255);
+ }
+
+.logout:hover{
+     color:rgb(204, 79, 56);
+}
+
+.text-body {
+     color:rgb(204, 79, 56);
+}
+
+.btn-register{
+     color:rgb(204, 79, 56);
+     background-color: white !important;
+     font-weight: 500;
+     border-color: rgb(204, 79, 56) !important;
+   
+    /* background-color: #F0B27A ;*/     
+  }
+
+.btn-register:hover{
+     color:#cc4f38;  
+  }
+ 
+.deleteAccount:hover{
+     text-decoration: underline;
+     color:#cc4f38;  
+}  
+
+.register{
+ background-color: rgba(245, 210, 182, 0.875);
+}  
+
+
+
+.btn-login{
+     color: white !important;
+     background-color:  rgb(99, 64, 56) !important;
+     font-weight: 500;    
+}
+
+#logout:hover {
+     color: rgb(204, 79, 56) !important;
+     
+   }
+
+.photoprofil{
+     border-radius: 10px;
+}
+
+#hide1{
+     display:none;
+}
+
+/*-------Fin header----------*/
+
+/*-------NAVBAR-------------------------------------*/
+.my-navbar {
+     background-color: #634038 !important;
+     height:auto;
+     width: 100%;
+     /*box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.54);*/
+	/*z-index: 99;*/    
+}
+
+
+
+.my-navbar .nav-link1{
+     color: white!important;
+     font-weight:normal;
+     font-size:1rem;
+     border-bottom: 2px solid ;
+     border-top: 2px solid;
+     border-color: #cc4f38; 
+     text-decoration: none;
+     padding-bottom: 9px;
+     padding-top: 9px;
+   
+} 
+
+.btn{
+     border-radius: 10px;
+}
+ 
+.my-navbar .nav-link {
+     color: white !important;
+     font-weight:normal;
+     font-size:1rem;
+     border-bottom: 2px solid transparent;
+     border-top: 2px solid transparent;
+     transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+     transition: padding-top 0.4s ease-in-out, border-color 0.3s ease;
+     padding-bottom: 0px;
+     padding-top: 0px;
+}
+
+.my-navbar .nav-link:hover {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border-bottom-color: #cc4f38; 
+    border-top-color:#cc4f38; 
+}
+
+.my-navbar .btn-don {
+     background-color:#cc4f38 !important;
+     border-radius: 10px;
+    /* #f5d2b6;*/
+   }
+ 
+ .btn-info{
+      color: white;
+      background-color:  #cc4f38;
+      border-radius: 20px;
+      border-color: #cc4f38;
+ }  
+
+ .btn-info:hover{
+       background-color: #cc4f38;
+       color:  white;
+       border-color: #cc4f38;
+     
+ }  
+
+ .alert-success{
+     border-radius: 20px;
+    
+ }
+
+.btn-info2 {
+     color: white;
+     background-color:  rgba(204, 78, 56, 0.843);
+     border-radius: 20px;
+     border-color: rgba(204, 78, 56, 0.725);
+}  
+
+
+.my-navbar span a.btn-don{
+        color:white;
+        font-weight:bold;
+   }
+   
+.my-navbar span a.btn-don:hover {
+        color: #fff;
+        background-color:transparent;
+       /* transition: background-color 3s;*/     
+   }
+   
+
+/*-------FIN NAVBAR-------------------------------------*/
+
+/*-------SECTION1---BANNER-------------------------------------*/
+.banner {
+   /*background: url('../slider/bannercover.png') center center fixed no-repeat;*/
+   background: linear-gradient(rgba(22, 21, 21, 0.373), rgba(13, 12, 12, 0.197)), url('../uploads/bannercover.jpg');
+   /*l */
+   background-repeat:no-repeat;
+   background-attachment:fixed;
+   background-size:cover;
+   background-position: center center;
+   width: 100%;
+   height: 58vh;
+   left: 0;
+   top: 0;
+   z-index: 1;
+}
+
+
+.banner .banner-desc{
+      font-size: 1.5rem;  
+      font-weight: 400;
+      color:white;
+}
+
+.banner .btn-banner {
+     color:white!important;
+     background-color: #cc4f38 !important; 
+     font-weight: 500;
+     border-color:  #cc4f38 !important;
+     border-radius: 25px;
+  
+}
+
+
+
+.banner p a.btn-banner:hover {
+	color:#cc4e389f; 
+	background:#cc4e389f; 
+    /* transition: background-color 3s;*/
+    
+}
+
+#btn-banner {
+     color:white!important;
+     background-color: #cc4f38 !important; 
+     font-weight: 500;
+     border-color:  #cc4f38 !important;
+     border-radius: 25px;
+}
+
+#btn-banner:hover {
+     color:#cc4e389f; 
+	background:#cc4e389f; 
+}
+/*-------FIN SECTION1---BANNER-------------------------------------*/
+
+
+     
+/*-------SECTION2--------------------------------------*/
+
+
+.card-section2{
+     background-color:#634038!important;
+     
+}
+
+
+/*------- section SLIDER------------ */
+
+
+
+/*-------SECTION4--------------------------------------*/
+/* .cc-menu {
+    background: url('../uploads/logo1.png') center center fixed no-repeat;
+     background-size:cover;
+     height: 40rem;
+     height: 100%;
+     width: 100%;
+  
+  }*/
+/*-------FIN SECTION 4--------------------------------------*/
+/*.article-menu{
+     background: linear-gradient( 90deg, #f8f4f0 100%, rgba(230,222,211,0.5) 100% );
+   
+
+}
+
+
+
+/*--------FOOTER-------*/
+footer{
+     color: white !important;  
+}
+
+#fa-phone{
+     color:rgb(204, 79, 56) !important;
+    }
+      
+ 
+.fa-sharp{
+     cursor: pointer; 
+   }   
+
+.mentions-legales:hover{
+     text-decoration: underline;
+     color:rgb(204, 79, 56) !important;
+     
+     
+}
+
+.mentions-legales{
+     text-decoration: none;
+     color:white !important;
+}
+
+.info-footer{
+     color:rgb(204, 79, 56) !important;
+
+}
+.info-footer:hover{
+     color:rgb(204, 79, 56) !important;
+
+}
+
+
+
+.footer1{
+     background: linear-gradient(rgba(22, 21, 21, 0.537), rgba(13, 12, 12, 0.758)), url('../uploads/bannercover4.jpg');
+     background-repeat:no-repeat;
+     background-attachment:initial;
+     background-size:cover;
+     background-position: center center;
+     height:auto;
+     width: 100%;
+     background-color: #445a60;
+     color:white !important;
+   
+}
+
+
+@media only screen and (max-width: 770px) {
+    
+
+.banner {
+     /*background: url('../slider/bannercover.png') center center fixed no-repeat;*/
+     background: linear-gradient(rgba(22, 21, 21, 0.161), rgba(13, 12, 12, 0.347)), url('../uploads/bannercover.jpg');
+     background-repeat:no-repeat;
+     background-attachment:initial;
+     background-size:cover;
+     background-position: center center;
+     height: auto;
+     width: 100%;
+  }
+  
+
+   
+   }
+
+
+  

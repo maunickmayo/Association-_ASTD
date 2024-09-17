@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles de {{ category.name }}{% endblock %}
+
+{% block body %}
+
+             <div class="container-fluid mb-5">
+
+                     <div class="row">
+                             <h1 class="text-center my-4"> Catégories {{ category.name }}</h1>
+                      </div>
+                
+                     {% if articles is not empty %}
+                     <div class="row">    
+                                {% for article in articles %}
+                                 <div class="col-12 col-md-6 col-lg-3">
+                                         <a href="{{ path('show_article', {'cat_alias': article.category.alias, 'article_alias': article. alias, 'id':article.id}) }}"     title="voir l'article">
+                                          <img src="{{ asset('uploads/' ~ article.photo) }}" alt="{{ article.title }}" class="img-fluid rounded shadow">
+                                          </a>
+                                          <hr>
+                                          <a href="" class="text-decoration-none text-dark">{{article.title }}</a>
+                                          <p class="text-muted">{{ article.subtitle }}</p>
+                                  </div>
+                                  {% endfor %} 
+                     </div>
+                    {% endif %}                
+            </div>   
+{% endblock %}

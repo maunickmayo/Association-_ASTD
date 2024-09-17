@@ -1,0 +1,52 @@
+   <div class="container-fluid">
+      <div class="row justify-content-center">
+      <nav class="my-navbar navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+   {#<a class="navbar-brand text-white" href="#">ASTD</a>#} 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: #cc4f38;">
+      <span class="navbar-toggler-icon"  style="background-color: #cc4f38;"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item mt-1 active pe-1">
+           <a class="nav-link1 " id="admin" aria-current="page" href="{{ path('app_home') }}"><i class="fa fa-home"></i>Accueil</a>
+        </li>
+       
+       {# <li class="nav-item pe-4 dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Nous connaître 
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ path('qui_sommes_nous') }}">Qui sommes-nous ? </a></li>
+            <li><a class="dropdown-item" href="{{ path('nos_missions') }}">Nos missions</a></li>
+            <li><a class="dropdown-item" href="{{ path('nos_valeurs') }}">Nos valeurs</a></li>
+            <li><a class="dropdown-item" href="{{ path('nos_meetings') }}">Nos réunions</a></li>
+          </ul>
+        </li>#}
+        <li class="nav-item ">
+          <a class="nav-link " href="{{ path('historique') }}">Nous connaître</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link " href="{{ path('objectifs') }}">Les objectifs</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link " href="{{ path('nos_actions') }}">Nos actions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('questions-reponses')}}">F.A.Q</a>
+        </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="{{ path('app_contact') }}">Nous contacter</a>  
+        </li>
+       
+      </ul>
+       <span class="navbar-text">
+        <a class="btn btn-don fs-5"  href="{{ ('https://donate.stripe.com/7sI5l779Ffgg7MA5kk') }}">Faire un don</a>
+      </span>
+
+    </div>
+  </div>
+  
+</nav>
+
+

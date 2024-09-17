@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le paiement a échoué{% endblock %}
+
+{% block body %}
+
+ <h1>Désolé le paiement a échoué, veuillez réeessayer ou modifier le mode de paiement!</h1>
+    <p> 
+     Si vous avez des questions, veuillez nous contacter directement <a href="{{ path('app_contact') }}"> ici </a> ou envoyez-nous un e-mail 
+      <a href="mailto:infoastd@as-st-thomas-diaspora.org">infoastd@as-st-thomas-diaspora.org</a>.
+    </p>
+ 
+{% endblock %}

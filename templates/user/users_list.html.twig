@@ -1,0 +1,109 @@
+ {%  extends 'base_admin.html.twig' %}    
+
+ {% block title %}Liste des membres{% endblock %}   
+    
+
+    {% block body %}
+
+
+             <div class="container-fluid">
+                          
+                          <div class="row">
+                                   <div class="col-12">
+                                      <a href="{{ path('dashboard') }}"><i class="fa-solid fa-backward"></i> Retour au Tableau de bord</a>
+                                   </div>
+                                   
+                          </div>
+
+                          <div class="row">
+                                   <div class="col-12">
+                                        <h1 class="text-center my-4"><i class="fa fa-user"></i>Liste des membres</h1>        
+                                   </div>
+                          </div>
+             
+                          <div class="row">
+                                   <div class="col-6"><a href="{{ path('create_user') }}" class="btn btn-outline-info"><i class="fa-sharp fa-solid fa-plus mx-1"></i>Ajouter un membre</a></div>
+                                    <div class="col-6 text-end"><a href="{{ path('user_trash')}}" class="btn btn-outline-warning"><i class="fa fa-trash"></i> Corbeille</a></div>      
+                          </div>
+
+                         {#tableau#}
+                         <div class="row">
+                                <div class="table-responsive ">
+                                       <table class="table table-bordered table-success">
+                                               <thead>
+                                                   <tr>
+                                                       <th>#</th>
+                                                       <th>Nom</th>
+                                                       <th>Prenom</th>
+                                                       <th>Sexe</th>
+                                                       <th>Photo</th>
+                                                       <th>E-mail</th>
+                                                       <th>Téléphone</th>
+                                                       <th>Adresse</th>
+                                                       <th>Inscrit le </th>
+                                                       <th>Modifié le </th>
+                                                       <th>Actions</th>
+                                                    </tr>
+                                               </thead>
+                                               <tbody>
+                                               {% for user in users %}
+                                                    <tr >
+                                                        <td>{{ user.id }}</td>
+                                                        <td>{{ user.firstname }}</td>
+                                                        <td>{{ user.lastname }}</td>       
+                                                        <td>{{ user.genre }}</td>       
+                                                        <td> 
+                                                              {% if (user.photo) %}
+                                                              <ul class="list-inline">
+                                                                  <li class="list-inline-item">
+                                                                       <img src="{{ asset('uploads/' ~ user.photo) }}" alt=" " width="100" height="100" class="img-fluid rounded ">
+                                                                  </li>
+                                                                  {% else %}
+                                                                   <li class="list-inline-item">
+                                                                        <img src="{{ asset('uploads/avatar.png') }}" width="100" height="100"  alt="" class="img-fluid rounded">      
+                                                                   </li>
+                                                              </ul>
+                                                                {% endif %}
+                                                         </td>
+                                                         <td>{{ user.email }}</td>
+                                                         <td>{{ user.phone }}</td>
+                                                         <td>
+                                                              <ul class="list-inline">
+                                                                   <li class="list-inline-item"> {{ user.numberstreet }} </li>
+                                                                   <li class="list-inline-item"> {{ user.adress }}</li>
+                                                                   <li class="list-inline-item"> {{ user.zipcode }}</li>
+                                                                   <li class="list-inline-item"> {{ user.city }}</li>
+                                                                   <li class="list-inline-item"> {{ user.country }}</li>
+                                                              </ul>
+                                                       </td>   
+                                                         <td>{{ user.createdAt | date('d/m/Y') }}</td>
+                                                         <td>{{ user.updatedAt | date('d/m/Y') }}</td>
+                                                         <td>
+                                                              <ul class="list-inline">
+                                                                    <li class="list-inline-item"> <a href="{{ path('update_user', {"id": user.id}) }}" class="text-info"   title="Modifier le membre"> <i class="fa-solid fa-user-pen"></i></a>  
+                                                                    </li>
+                                                                    <li class="list-inline-item">
+                                                                        <a href="{{ path('soft_delete_user', {"id": user.id}) }}" class="text-danger" title="Archiver le membre" onclick="return confirm('Voulez-vous archiver ce membre ?')"><i class="fa fa-trash"></i></a>  
+                                                                    </li>
+                                                               </ul>    
+                                                         </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                        </table>  
+                                </div>
+                            </div>
+                          {# fin  tableau#}
+             </div>
+  {% endblock %}          
+       
+
+          
+      
+                 
+
+           
+       
+
+           
+           

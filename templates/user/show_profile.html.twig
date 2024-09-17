@@ -1,0 +1,104 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %} Profil de {{ app.user.firstname | capitalize }} {{ app.user.lastname | capitalize }}  {% endblock %}
+
+{% block body %} 
+
+              <div class="container-fluid">
+         <div class="row py-3">
+            <div class="col-12 text-center d-flex justify-content-center">       
+                    {% for message in app.flashes('profil') %}
+                    <div class="alert btn-info dismissible fade show col-lg-6 col-md-9 col-12 " role="alert"><i class="fa-solid fa-hand"></i>  {{ message }}
+                     {% endfor %}
+            </div>
+        </div>
+    </div>
+                             
+{#                 
+           <div class="container-fluid">
+                           <div class="row my-4">
+                                 <div class="col-12 text-center">
+                                      <p> Bonjour, <strong class="fs-5">  {{ app.user.firstname | capitalize }}  {{ app.user.lastname | capitalize }} </strong> <img src="{{ asset('images/hello.png') }}"  class="">et   Bienvenue dans votre espace personnel.    
+                                       </p>
+                                     
+                                 </div>      
+                           </div>#}
+                            <div class="row">
+                                 <div class="col-12 text-center">
+                                      <p> Profil de: <strong class="fs-5 text-header">  {{ app.user.firstname | capitalize }}  {{ app.user.lastname | upper }} </strong>   
+                                       </p>    
+                                 </div>  
+                          </div>    
+                          <div class="row justify-content-center">
+             <div class="card col-lg-6 col-md-9 col-sm-12 col-12  text-center">
+                      <div class="card-header">
+                                         {% if (app.user.photo ) %}  
+                                   <img src="{{ asset('uploads/' ~ app.user.photo) }}" alt="{{ app.user.lastname }}" class="img-fluid rounded shadow " style="width: 7rem;border-radius: 20px;">    
+                                <ul class="list-group list-group-flush">
+                                      <li class="list-group-item text-center text-muted ">
+                                            <a href="{{ path('update_photo_profil', {'id':app.user.id}) }}" class=" mx-1" style="color:#cc4f38;" title="Modifier la photo de profil"><i class="fa fa-edit"></i></a>
+                                      </li>
+                                           {% else %} 
+                                      <li class="list-group-item text-center text-muted">   
+                                           <a  class="btn btn-register" href="{{ path('add_photo_profil', {'id': app.user.id}) }}"><img src="{{ asset('uploads/avatar.png') }}" class="img-fluid rounded shadow " style="width: 7rem;border-radius: 20px;" alt="" title="MODIFIER LA PHOTO"><br><button class="btn btn-register">Ajouter une photo</button></a>
+                                      </li>
+                                           {% endif %}
+                               </ul>     
+                       </div>               
+                       <div class="card-body">
+                             {% if is_granted("ROLE_ADMIN") %}
+                              <h6 class="card-title"><strong>Total articles publiés</strong> :  {{ articles | length }}</h6> 
+                             {% endif %}               
+                             <p class="card-text"><strong>E-mail</strong>:   {{ app.user.email }} </p> 
+                             <p class="card-text"><strong>Adresse</strong>:  {{ app.user.numberstreet }} {{ app.user.adress }} {{ app.user.zipcode }} {{ app.user.city }} {{ app.user.country }}</p>
+                             <p class="card-text"><strong>Téléphone</strong> : {{ app.user.phone }}</p>
+                             <ul class="list-inline">
+                                   <li class="p-2"> <a href="{{ path('edit_password') }}" class=" list-inline-item btn btn-login">Modifier mon mot de passe</a></li>
+                                   <li> <a href="{{ path('edit_profile', {'id': app.user.id}) }}" class="list-inline-item btn btn-login">Modifier mes informations</a></li>
+                             </ul>
+                        </div>     
+                        <div class="card-footer text-muted">
+                              Compte crée le {{ app.user.createdAt | date('d/m/Y') }} | Modifié : {{ app.user.updatedAt | date('d/m/Y') }}
+                         </div> 
+                        <div class=" mt-5 mb-1">
+                              <a href=" {{ path('hard_delete_profil', {'id':app.user.id}) }}" class="btn text-muted deleteAccount" title="Supprimer mon compte" onclick="return confirm ('Voulez-vous supprimer votre compte? ATTENTION cette action est irréversible')">Supprimer mon Compte</a>
+                        </div>
+               </div>
+
+         </div>  
+               
+     
+    </div>
+
+                 {#    
+                   
+     /**
+     * @Route("/supprimer-photo-profil-{id}", name="delete_photo_profil", methods={'GET'})
+     */
+     public function deletePhotoProfile(User $user): RedirectResponse
+     {     
+      
+      $photo = $user->getPhoto();  
+      $photo_path = $this->getParameter('uploads_dir').'/'.$photo;
+      if(file_exists($photo_path)) {
+        unlink($photo_path);
+      }
+      
+      return $this->redirectToRoute('app_profile', [
+        'id' => $user->getId()
+       ]);
+     }
+                 
+                 #}
+                         
+
+        
+
+{% endblock %}
+
+
+
+
+                                   
+                                   
+                            

@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter un article {% endblock %}
+
+{% block body %} 
+
+<div class="row">
+
+         <div class="col-12 my-2">
+         <a href="{{ path('articles_list') }}"><i class="fa fa-solid fa-arrow-left"></i> Retour à la liste des articles</a>
+         </div>
+
+     </div>
+
+ {% if article is not defined %}
+<h1 class= "text-center my-4"> Ajouter un article</h1>
+{% else %} 
+<h1 class=""text-center my-4""> modifier un article </h1>
+{% endif %} 
+
+
+<div class="row justify-content-center">
+
+   
+    
+      {{ form_start(form, {'attr':{'class':'col-lg-6 col-md-9 col-12', 'novalidate': 'novalidate'}}) }}
+
+          <div class="row">
+          
+                <div class="col-6">{{ form_row(form.title) }}</div>
+                <div class="col-6">{{ form_row(form.subtitle) }}</div>
+         </div>
+
+         {{ form_row(form.content) }} {#le form_row(form) c:est ce qui comportera tous vos inputs, NB form :c est un objet qui a des proprietes c st pour cela qu on le manipule coe ds le JS#}
+
+       
+
+         {{ form_row(form.photo) }} 
+
+     {{ form_end(form) }}
+
+   
+</div>
+
+
+
+
+
+{% endblock %} 
+

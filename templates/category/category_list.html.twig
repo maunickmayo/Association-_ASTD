@@ -1,0 +1,96 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+           <div class="container-fluid">
+           
+                            
+                     <div class="row">
+                             <div class="col-12 ">
+                                <a href="{{ path('dashboard') }}"><i class="fa-solid fa-backward "></i> Retour au Tableau de bord</a>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                       <div class="col-12">      
+                            <h2 class="text-center"><i class="fa fa-tags"></i> Toutes les catégories</h2> 
+                       </div>
+                    </div>
+                    
+                    <div class="row">
+                         <div class="col-6"><a href="{{ path('create_category') }}" class="btn btn-outline-info">
+                             <i class="fa-sharp fa-solid fa-plus mx-1" ></i>Ajouter une categorie</a>
+                         </div>
+                         <div class="col-6 text-end"><a href="{{ path('category_trash') }}" class="btn btn-outline-warning">
+                              <i class="fa fa-trash"></i> Voir les catégories  archivées</a> 
+                         </div>
+                    </div>
+
+                    <div class="row">
+                             <div class="table-responsive "> 
+                                     <table class="table table-bordered table-success my-3">
+                                        <thead>
+                                           <tr>
+                                              <th>#</th>
+                                              <th>Nom</th>
+                                              <th>Alias</th>
+                                              <th>Créée le</th>
+                                              <th>Modifiée le</th>
+                                              <th>Actions</th>
+                                              </tr>
+                                        </thead>
+                                        <tbody>
+                                       {% for category in categories %}
+                                           <tr>
+                                              <td>{{ category.id }}</td>
+                                              <td>{{ category.name }}</td>
+                                              <td>{{ category.alias }}</td>
+                                              <td>{{ category.createdAt | date('d/m/Y') }}</td>
+                                              <td>{{ category.updatedAt | date('d/m/Y') }}</td>
+                                             {#{% if category.deletedAt is null %} #}
+                                              <td>
+                                                   <ul class="list-inline">
+                                                        <li class="list-inline-item">
+                                                             <a href="{{ path('update_category', {"id": category.id}) }}" class="text-info" title="Modifier la catégorie">
+                                                              <i class="fa fa-edit"></i> </a>                
+                                                        </li>
+                                                        <li class="list-inline-item"> 
+                                                             <a href="{{ path('soft_delete_category', {"id": category.id}) }}"   class="text-danger"
+                                                                title="Archiver la catégorie" onclick="return confirm('Voulez-vous archiver cette catégorie ?')">
+                                                               <i class="fa fa-trash"></i> </a>
+                                                        </li>
+                                                    </ul>
+                                              </td>
+                                            {# {% else %}
+                                             <td class="bg-warning">
+                                             <a href=""
+                                             class="text-primary"
+                                              title="Restaurer la catégorie">
+                                                 <i class="fa-solid fa-trash-arrow-up"></i>
+                                               </a>
+                                                <a href=""
+                                                class="text-danger"
+                                                 title="Supprimer définitivement la catégorie"
+                                                  onclick="return confirm('Voulez-vous supprimer définitivement cette catégorie ?')">
+                                                    <i class="fa fa-times-circle"></i>
+                                                      </a>
+                                                </td> #}
+                                             {#{% endif %}#}
+                                             </tr>
+                                         {% else %}
+                                         <tr>
+                                                 <td colspan="12" class="bg-warning text-center">Aucune catégorie dans la base</td>
+                                         </tr>
+                                        {% endfor %}
+
+                                      </tbody>
+                                   </table>
+                            </div>
+                    </div>
+
+
+           </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous connaître{% endblock %}
+
+{% block body %}
+    <div class="container-fluid register">
+
+     <h1 class="text-center py-3">Nous connaître</h1>
+          <div class="row justify-content-around  align-items-center">
+                
+            
+                 <div class="col-lg-3 col-md-9 col-12">
+                 <h3>Historique</h3>
+                      <p class=" text-justify my-4">
+                      
+   La création de l’Association “Saint-Thomas Diapora” (A.S.T.D) est initialement une prise de conscience liée aux problèmes existentiels des populations en difficulté.
+
+En effet, les populations en France et dans le monde sont de plus en plus confrontées à la pauvreté, à des sinistres, des guerres ou des catastrophes.
+
+      </p>
+          
+       <p>
+Cette situation a créée une prise de conscience sur les besoins vitaux qui sont : la nourriture, les soins de santé et d’autres besoins comme l’habillement et l’éducation des enfants de familles démunies.
+
+C’est dans ce conteste que le président-fondateur créa l’Association “Maison des Enfants Déshérités” (M.E.D) en mars 2009 en France et au Togo pour l’instant, pour initier et organiser plusieurs projets d’aide humanitaire avec une équipe formée compétente et efficace, afin de favoriser le succès de l’Association.</p>
+    
+                 </div>
+        
+               <div class="col-lg-4 col-md-9 col-12 text-center position-relative">
+			   
+				<img src="{{ asset('uploads/world3.png') }}" class="img-fluid" alt="...">
+			
+				<p class="position-absolute bottom-0 start-50 translate-middle-x fs-4 fw-bold"> A.S.T.D</p>
+			</div>
+                 <div class="col-lg-3 col-md-9 col-12">
+                 <h3>Présentation de Saint-Thomas Diaspora (A.S.T.D )</h3>
+                      <p class=" text-justify my-4">
+
+Présentation de la société SAINT-THOMAS DIASPORA
+SAINT-THOMAS DIASPORA, association déclarée, immatriculée sous le SIREN 899157713,<br> Elle est créée en France le 25-07-2018 sous le numéro Siret : 
+899 157 713 00012.<br> Domiciliée à PITHIVIERS (45300), elle est spécialisée dans le secteur d'activité de l'action sociale sans hébergement.<br>
+
+Elle est déclarée et reconnue sous le numéro préfectoralN° RNA W453 001 866 - SIREN 899 157 713.
+Les 4 années d’expérience d’actions humanitaires sur le terrain sont une assurance non négligeable pour les futurs projets.
+
+
+      </p>
+          
+                 </div>
+    
+         </div>
+          <div class="row">
+                     <div class="col-12 d-flex justify-content-center ">
+                                    <a href="{{ ('https://www.facebook.com/profile.php?id=100087765586194') }}" ><img src="{{asset('/images/facebook.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon facebook" max-width="100%" height="auto" ></a>   
+                                          <a href="{{ ('https://www.instagram.com/asstthomasdiaspora/') }}"><img src="{{asset('/images/insta.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon instagram" max-width="100%" height="auto"></a>
+                                          <a href="{{ ('https://twitter.com/assthomasdiaspo') }}"><img src="{{asset('/images/twitter.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon twitter" max-width="100%" height="auto"></a>  
+                                          <a href="{{ ('https://www.youtube.com/@as-st-thomas-diaspora') }}"><img src="{{asset('/images/youtube.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8"  id="img" alt="icon youtube" max-width="100%" height="auto"></a>
+                                         
+                              </div>
+            </div>
+    
+    </div>
+    
+
+    
+{% endblock %}
+

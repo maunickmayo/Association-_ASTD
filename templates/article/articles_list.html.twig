@@ -1,0 +1,94 @@
+ {%  extends 'base_admin.html.twig' %}      
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+
+             <div class="container-fluid">
+        
+                             <div class="row">
+                                   <div class="col-12 ">
+                                        <a href="{{ path('dashboard') }}"><i class="fa-solid fa-backward "></i> Retour au Tableau de bord</a>
+                                   </div>
+                             </div>
+
+                             <div class="row">
+                                    <div class="col-12 text-center">
+                                       <h2 class="text-center"><i class="fa fa-flag"></i> Tous les articles</h2>
+                                    </div>
+                             </div>
+
+                             <div class="row">
+                                     <div class="col-6"><a href="{{ path('create_article') }}" class="btn btn-outline-info"><i class="fa-sharp fa-solid fa-plus mx-1"></i>Ajouter un article</a>
+                                     </div>
+                                     <div class="col-6 text-end"><a href="{{ path('article_trash') }}" class="btn btn-outline-warning"><i class="fa fa-trash"></i> Corbeille</a> 
+                                     </div>
+                             </div>
+
+                             <div class="row">
+                                     <div class="table-responsive ">
+                                          <table class="table table-bordered table-success ">
+                                             <thead>
+                                                 <tr>
+                                                     <th>#</th>
+                                                     <th>Titre</th>
+                                                     <th>Contenu</th>
+                                                 
+                                                     <th>Photo</th>
+                                                     <th>Créé le</th>
+                                                     <th>Modifié le</th>
+                                                     <th>Actions</th>
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                             {% for article in articles %}
+                                                 <tr>
+                                                     <td>{{ article.id }}</td>
+                                                     <td>{{ article.title | length > 20 ? article.title | slice(0,20) ~ '...' : article.title }}</td>
+                                                     <td>{{ article.content | length > 20 ? article.content | slice(0,20) ~ '...' : article.content }}</td>
+                                         
+                                                     <td> 
+                                                         <ul class="list-inline">
+                                                              {% if (article.photo) %}
+                                                               <li class="list-inline-item">
+                                                                      <a href="{{ path('show_article', {'article_alias': article. alias, 'id':article.id}) }}"  title="voir l'article">
+                                                                      <img src="{{ asset('uploads/' ~ article.photo) }}"  width="100" height="auto" alt="{{ article.title }}" class="img-fluid rounded "></a> 
+                                                               </li>
+                                                              {% else %}
+                                                               <li class="list-inline-item">
+                                                                      <p><i class="fa-solid fa-image "></i>Article sans photo</p>
+                                                               </li>
+                               
+                                                              {% endif %}
+                                                          </ul>
+                                                     </td>
+                                                     <td>{{ article.createdAt | date('d/m/Y') }}</td>
+                                                     <td>{{ article.updatedAt | date('d/m/Y') }}</td>
+                                                     <td>
+                                                          <ul class="list-inline">
+                                                                 <li class="list-inline-item">
+                                                                      <a href="{{ path('show_article', {'article_alias': article. alias, 'id':article.id}) }}"class="text-info" title="Voir l'article"><i class="fa-solid fa-eye">
+                                                                      </i></a>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                      <a href="{{ path('update_article', {"id": article.id}) }}" class="text-info" title="Modifier l'article"><i class="fa fa-edit"></i></a>
+                                                                </li>
+                                                                <li class="list-inline-item">
+                                                                       <a href="{{ path('soft_delete_article', {"id": article.id}) }}" class="text-danger" title="Archiver l'article" onclick="return confirm('Voulez-vous archiver cet article ?')"><i class="fa fa-trash">
+                                                                       </i></a>  
+                                                              </li>
+                                                          </ul>
+                                                      </td>
+                                                  </tr>
+                                            {% else %}   
+                                                  <tr>
+                                                      <td colspan="12" class="bg-warning text-center"> Aucun article dans la liste</td>
+                                                  </tr>
+                                           {% endfor %}
+                                       </tbody>
+                                    </table>
+                                 </div>
+                             </div>
+
+             </div>       
+ {% endblock %}

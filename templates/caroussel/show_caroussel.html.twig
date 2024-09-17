@@ -1,0 +1,21 @@
+             
+                     
+                   <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                         <div class="card" >
+                          <h2 class="card-title fs-4 text-center text-capitalize pt-3 pb-0 fw-bold" style="color:#000000;">{{ article.title | length > 29 ? article.title | slice(0,29) :   article.title }}</h2>
+                           <h5 class="card-title text-center pt-0 pb-0 fs-6 fw-bold" style="color:#D29F68!important">{{ article.subtitle | length > 60 ? article.subtitle | slice(0,60) ~ '..' : article.subtitle }}</h5>
+                                    {% if article.photo %}
+                                   <img class=" img-fluid px-3" width="100%" height="auto"  src="{{ asset('uploads/' ~ article.photo) }}"  alt="{{ article.title }}">
+                                    {% else %}
+                                    {% endif %}
+                               <div class="card-body">
+                                             {# Le filtre slice extrait une tranche d'une séquencev(découpe), d'un mappage ou d'une chaîne :#}
+                                   <p class="card-text pt-0">{{ article.content | length > 206 ? article.content | slice(0,206) ~ '...' : article.content | raw  }}</p>
+                                   <a  class="btn text-white fs-5 px-5 text-uppercase" style="background:#cc4f38;border-radius:20px;" href="{{ path('show_article', {'article_alias': article. alias, 'id':article.id}) }}" >Lire plus</a>
+                                
+                               </div>
+                         </div>
+                   </div>
+                             {% endfor %}        
+                     
+                                

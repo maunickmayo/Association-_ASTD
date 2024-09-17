@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+     
+    
+            <div class="container-fluid my-3">
+                    <div class="row my-5">
+                             <div class="col-12 d-flex justify-content-center">
+                                      <form method="post" class="col-12 col-md-6 col-lg-4 register p-lg-3 p-md-3 p-sm-3 p-2">
+                                                   {% if error %}
+                                              <div class="alert alert-danger">
+                                                   {{ error.messageKey|trans(error.messageData, 'security') }}
+                                              </div>
+                                                   {% endif %}
+                                                  <h1 class="h3 mb-3  font-weight-normal text-center text-header">Se connecter</h1>
+                                                      <label for="inputEmail"><i class="fa-solid fa-envelope mx-1"></i>E-mail</label>
+                                                      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                                                      <label for="inputPassword" class="py-1"><i class="fa-solid fa-key mx-1"></i>Mot de passe</label>
+                                              <div class="input position-relative" >
+                                                      <input type="password" name="password" id="myInput" class="form-control" autocomplete="current-password" required>
+                                                      <span class="eye" onclick="myFunction1()">
+                                                           <i class="fa-sharp fa-solid fa-eye position-absolute top-50 end-0 translate-middle" style="color:#cc4f38 !important;" id="hide1"></i>
+                                                           <i class="fa-sharp fa-solid fa-eye-slash position-absolute top-50 end-0 translate-middle" style="color:#cc4f38 !important;" id="hide2"></i>
+                                                      </span>
+                                             </div>
+                                                      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                                   {% if app.user %}
+                                             <div class="mb-3">
+                                                       You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                                             </div>
+                                                   {% endif %}
+
+                                             {#
+                                                   Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                                   See https://symfony.com/doc/current/security/remember_me.html
+
+                                             <div class="checkbox mb-3">
+                                                   <label>
+                                                      <input type="checkbox" name="_remember_me"> Remember me
+                                                   </label>
+                                             </div>
+                                           #} 
+                                           {# <div class="row my-3"> 
+                                                  <div class="col-6"> 
+                                                      <div class="checkbox mb-3">
+                                                         <label class="text-header">
+                                                            <input type="checkbox" name="_remember_me" > Se souvenir de moi
+                                                         </label>
+                                                      </div>
+                                                 </div>
+                                              </div>#} 
+                                            <div class="col-12"> 
+                                                  <a href="{{ path('app_forgot_password_request') }}" class=" text-muted" >Mot de passe oublié?</a>
+                                            </div>
+           
+                                            <div class="col-12 text-center py-3">
+                                                     <button class="btn btn-login col-12" id="btn-banner" type="submit" formnovalidate><i class="fa-solid fa-right-to-bracket"></i>
+                                                         Se connecter
+                                                     </button>
+                                            </div>
+                                     </form>
+                             </div>
+                             <div class="row text-center mt-1 mb-5">
+                                    <div class="col-12">Vous  n'avez pas de compte?  <a href="{{ path('app_register') }}"class=" text-muted" >S'inscrire maintenant</a>
+                              </div>
+                     </div>
+                  {# </div>	 #}    
+             </div>	 
+
+
+            <script>
+                    "use strict";
+
+                     function myFunction1(){
+                          var x =  document.getElementById("myInput");
+                          var y =  document.getElementById("hide1");
+                          var z =  document.getElementById("hide2");
+                           if(x.type === 'password'){
+                                   x.type = "text";
+                                   y.style.display = "block";
+                                   z.style.display = "none";  
+                               }else{
+                                   x.type = "password";
+                                   y.style.display = "none";
+                                   z.style.display = "block";  
+                            }
+                      }
+             </script>
+
+{% endblock %}

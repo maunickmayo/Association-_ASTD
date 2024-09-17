@@ -1,0 +1,83 @@
+{% extends 'base_admin.html.twig' %}
+
+{%  block title %}Voir la poubelle {%  endblock %}
+
+{%  block body %}
+   
+
+
+         <div class="container-fluid">
+  
+                  <div class="row">
+                       <div class="col-lg-12 col-md-6 col-sm-12 col-12  ">
+                             <a href="{{ path('articles_list') }}"><i class="fa fa-solid fa-arrow-left"></i> Retour à la liste des articles</a>
+                       </div>
+                 </div>
+
+                    <div class="row">
+        <div class="col-lg-12 col-md-6 col-sm-12 col-12 my-4">
+
+            <h2 class="text-center">Articles archivés</h2>
+
+            <table class="table-responsive">
+                <thead>
+                <tr>
+                   
+                    <th>#</th>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th>Photo</th>
+                    <th>Créé le</th>
+                    <th>Modifié le</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in archivedArticles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title | length > 20 ? article.title | slice(0,20) ~ '...' : article.title }}</td>
+                        <td>{{ article.content | length > 20 ? article.content | slice(0,20) ~ '...' : article.content }}</td>
+                        <td>
+                           {% if (article.photo) %}
+                                <ul class="list-inline">
+                                         <li class="list-inline-item">
+                                               <a href="" title="voir l'article">
+                                               <img src="{{ asset('uploads/' ~ article.photo) }}" class="img-fluid rounded " width="100" height="auto" alt="{{ article.title }}" >
+                                                </a>
+                                         </li>
+                              {% else %}
+                                         <li class="list-inline-item ">
+                                                 <p><i class="fa-solid fa-image "></i>Article sans photo</p>
+                                         </li>
+                                 </ul>
+                           {% endif %}
+                        </td>
+                        <td>{{ article.createdAt | date('d/m/Y') }}</td>
+                        <td>{{ article.updatedAt | date('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ path('restore_article', {"id": article.id}) }}" class="text-info" title="Restaurer l'article"><i class="fa-solid fa-trash-arrow-up"></i></a>
+                            <a href="{{ path('hard_delete_article', {"id": article.id}) }}" class="text-danger" title="Supprimer definitivement" onclick="return confirm('Voulez-vous supprimer definitivement cet article ?')"><i class="fa fa-times-circle"></i></a>
+                        </td>
+                    </tr>
+                 {% else %}
+                      <tr>
+                         <td colspan="12" class="bg-warning text-center"> Aucun article dans la poubelle</td>
+                      </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+        </div>
+    
+{%  endblock %}
+

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les domaiines  d'actions{% endblock %}
+
+{% block body %}
+    <div class="container-fluid  py-3  register">
+
+     <h1 class="text-center py-3">Les domaines  d'actions</h1>
+          <div class="row  justify-content-center ">
+          <h6 class="text-center py-2"> L’ Association Saint-Thomas Diaspora (A.S.T.D) intervient dans les domaines suivants:</h6>
+          <div class="col-lg-6 col-md-9 col-12 py-2">
+             <ol>
+        <li>1. Promouvoir la solidarité internationale par l’échange</li>
+        <li>2. Protection de l’enfance</li>
+        <li>3. Promotion de l’éducation infantile</li>
+        <li>4. Développement, assistance sociale, sanitaire et humanitaire</li>
+       </ol>
+          </div>
+    
+    
+         </div>
+       <div class="row ">
+                     <div class="col-12 d-flex justify-content-center ">
+                                    <a href="{{ ('https://www.facebook.com/profile.php?id=100087765586194') }}" ><img src="{{asset('/images/facebook.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon facebook" max-width="100%" height="auto" ></a>   
+                                          <a href="{{ ('https://www.instagram.com/asstthomasdiaspora/') }}"><img src="{{asset('/images/insta.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon instagram" max-width="100%" height="auto"></a>
+                                          <a href="{{ ('https://twitter.com/assthomasdiaspo') }}"><img src="{{asset('/images/twitter.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon twitter" max-width="100%" height="auto"></a>  
+                                          <a href="{{ ('https://www.youtube.com/@as-st-thomas-diaspora') }}"><img src="{{asset('/images/youtube.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8"  id="img" alt="icon youtube" max-width="100%" height="auto"></a>
+                                         
+                              </div>
+            </div>
+    </div>
+    
+
+    
+{% endblock %}
+

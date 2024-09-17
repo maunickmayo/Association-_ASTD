@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les objectifs{% endblock %}
+
+{% block body %}
+    <div class="container-fluid  py-4  register">
+
+     
+          <div class="row justify-content-center align-items-center">
+                
+            <h1 class="text-center">Les objectifs</h1>
+             <h6 class="text-center">   Pour réaliser ces objectifs, A.S.T.D se donne les moyens d’action suivants :</h6>
+                 <div class="col-lg-7 col-md-9 col-12">
+                
+               <p class="text-justify">
+            
+             <ol>
+
+                   <p>
+                        <h5>
+                         Pour la  petite histoire 
+                        </h5>
+                        Au départ l'Association Saint-Thomas Diaspora lors de sa création avait pour 
+                        Entraide, solidarité et promotion des camerounais résidents en Europe, participation aux projets du groupe et/ou personnel des membres et pour le développement du quartier Saint-Thomas à Douala au Cameroun <br>
+                        Mais celle-ci s'est dévéloppée ayant des objectifs plus larges a savoir : 
+                   </p>
+                      <p>
+             <li>1. Promouvoir la solidarité internationale par l’échange culturel, des projets de camps chantiers.</li>
+             <li>2. Informer et sensibiliser les populations sur les problèmes éducationnels, sanitaires et environnementaux.</li>
+             <li>3. Organiser et participer à des ateliers et séminaires de formation.</li>
+             <li>4. Lutter contre l’analphabétisme et l’illettrisme sous toutes leurs formes dans le monde.</li>
+             <li>5. Réaliser et participer au projet de développement socio-économique, éducationnel et environnemental.</li>
+             <li>6. Collaborer avec les pouvoirs publics, les collectivités locales, les ONG, les Associations et institutions nationales et internationales pour échange des expériences.</li>
+             <li>7. Organiser les voyages touristiques, des stages.</li>
+             <li>8. Accompagner l’Etat dans sa mission de protection et de promotion des droits de l’enfant.</li>
+             <li>9. Créer un centre d’accueil et d’éducation des enfants en situation difficile.</li>
+             </ol>
+
+               </p>
+                 </div>
+    
+         </div>
+    
+            <div class="row">
+                     <div class="col-12 d-flex justify-content-center ">
+                                    <a href="{{ ('https://www.facebook.com/profile.php?id=100087765586194') }}" ><img src="{{asset('/images/facebook.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon facebook" max-width="100%" height="auto" ></a>   
+                                          <a href="{{ ('https://www.instagram.com/asstthomasdiaspora/') }}"><img src="{{asset('/images/insta.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon instagram" max-width="100%" height="auto"></a>
+                                          <a href="{{ ('https://twitter.com/assthomasdiaspo') }}"><img src="{{asset('/images/twitter.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8" id="img" alt="icon twitter" max-width="100%" height="auto"></a>  
+                                          <a href="{{ ('https://www.youtube.com/@as-st-thomas-diaspora') }}"><img src="{{asset('/images/youtube.png')}}" class="img-fluid icons col-7 col-md-9 col-lg-8"  id="img" alt="icon youtube" max-width="100%" height="auto"></a>
+                                         
+                              </div>
+            </div>
+    </div>
+    
+
+    
+{% endblock %}
+

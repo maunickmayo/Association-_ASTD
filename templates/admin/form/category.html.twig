@@ -1,0 +1,26 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter une categorie{% endblock %}
+
+{% block body %}
+
+ <div class="row">
+
+         <div class="col-12 ">
+              <a href="{{ path('category_list') }}"><i class="fa fa-solid fa-arrow-left"></i> Retour a la liste des catégories</a>
+         </div>
+
+     </div>
+       {% if category is not defined %}
+       <h1 class="text-center my-4">Ajouter une categorie</h1>
+       {% else %}
+        <h1 class="text-center my-4">Modifier la categorie {{ category.name }}</h1>
+        {% endif %}     
+
+        <div class="row">
+    
+         {{ form(form, {'attr':{'class':'col-4 mx-auto'}}) }}
+   
+         </div>
+
+{% endblock %}

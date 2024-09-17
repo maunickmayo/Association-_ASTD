@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    <head>
+        <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">{#c'est pour le responsive mobile #}
+        {#<meta name="theme-color" content="#1A1A1A">#}
+        <title>{% block title %}Saint-Thomas Diapora : Association Humanitaire France{% endblock %}</title>
+        <meta name="description"
+              content="Saint-Thomas Diapora : Association Humanitaire France">
+         {#  links favicons -->
+        <link rel="icon" type="img/ico" sizes="16x16" href="{{ asset('favicon/favicon.ico') }}">
+         {#  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+           {# END links favicons #}
+            {#<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="928fe430-7242-43fe-9e99-c0f67ba71f78" data-blockingmode="auto" type="text/javascript"></script>#} 
+             {#  Axentix CSS minified version #}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@2.2.0/dist/axentix.min.css">
+            {% block stylesheets %}
+             {#  { encore_entry_link_tags('app') }} #}
+              {#Bootstrap link css#}
+              <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"  crossorigin="anonymous">
+               {#jQuery#}
+               <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+               {#Bootstrap link icons#}
+               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+                  {# Font Awesome  #} 
+             <link rel="stylesheet"
+             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+               <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
+              {#le css s'éxécute en partant du bas vers le haut#}
+               {#fonts familly
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+              <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Montserrat:wght@100&display=swap" rel="stylesheet">
+               #}
+            
+
+              
+           {% endblock %}    
+            
+    </head>
+        
+      
+        <body> 
+         
+           {% include "include/_header.html.twig" %}
+           {% include "include/_nav.html.twig" %}
+            {% include 'include/_flashes.html.twig' %}
+            {#   <script id="CookieDeclaration" src="https://consent.cookiebot.com/928fe430-7242-43fe-9e99-c0f67ba71f78/cd.js" type="text/javascript" async></script>
+          #}
+         
+          {# ------------ photo couverture           #}
+     
+          {% block body %}
+            
+          {% endblock %}
+      
+       
+         
+                                                                                                                                                                                                                        
+           {% block javascripts %}
+           
+            {#{{ encore_entry_script_tags('app') }}#}
+         
+          {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+            <script src="{{ asset('js/script.js') }}"></script>  
+
+            <script>
+                 $(document).ready(function () {
+                 //console.log("Hello jQuery !");
+                 // console.log($(".icons"));
+                       $(".icons").hover(function () {
+                            $(this).css("width", "3.3rem");
+                            }, function () {
+                             $(this).css("width", "");
+                       });
+                 // console.log("class : ", $(".myClass"));
+                 // CALL BACK FUNCTION
+                 //----- NB pour les sélecteurs d'identifiants, jQuery utilise la fonction Javascript: document.getElementById() qui est extrêment efficace.
+                 });
+           </script>
+
+    </body>
+  
+</html>
+
+

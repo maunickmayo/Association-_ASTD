@@ -1,0 +1,77 @@
+{% extends 'base_admin.html.twig' %}
+
+{%  block title %}Voir la poubelle {%  endblock %}
+
+  {% block body  %}
+
+
+  <div class="row">
+
+         <div class="col-10 mx-auto my-4">
+         {% include 'include/_flashes.html.twig' %}
+         
+         </div>
+
+     </div>
+
+     <div class="row">
+
+         <div class="col-12 ">
+         <a href="{{ path('category_list') }}"><i class="fa fa-solid fa-arrow-left"></i> Retour a la liste des catégories</a>
+         </div>
+
+     </div>
+
+
+    <div class="row">
+        <div class="col-12">
+
+            <h2 class="text-center">Catégories archivées</h2>
+  
+   
+            <table class="table mx-auto">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Alias</th>
+                    <th>Créée le</th>
+                    <th>Modifiée le</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for category in archivedCategories  %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.alias }}</td>
+                        <td>{{ category.createdAt | date('d/m/Y') }}</td>
+                        <td>{{ category.updatedAt | date('d/m/Y') }}</td>
+                        <td>
+                               {# <td class="bg-warning"> </td>#}
+                                <a href="{{ path('restore_category', {"id": category.id}) }}"
+                                   class="text-primary"
+                                   title="Restaurer la catégorie">
+                                    <i class="fa-solid fa-trash-arrow-up"></i>
+                                </a>
+                                <a href="{{ path('hard_delete_category', {"id": category.id}) }}"
+                                   class="text-danger"
+                                   title="Supprimer définitivement la catégorie"
+                                   onclick="return confirm('Voulez-vous supprimer définitivement cette catégorie ?')">
+                                    <i class="fa fa-times-circle"></i>
+                                </a>
+                            
+                        {% else %}
+                             <tr>
+                                <td colspan="12" class="bg-warning text-center">Aucune catégorie dans la base</td>
+                           </tr>
+ 
+                    </tr>   
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+ {% endblock %}

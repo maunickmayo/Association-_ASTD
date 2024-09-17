@@ -1,0 +1,93 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Slider{% endblock %}
+
+{% block body %}
+   
+
+
+   
+    <div class="row">
+            <div class="col-8 mx-auto mt-3">
+                {% include 'include/_flashes.html.twig' %}
+            </div>
+        </div>
+
+     </div>
+
+
+               
+ <div class="col-12 ">
+         <a href="{{ path('dashboard') }}"><i class="fa fa-solid fa-arrow-left"></i> Retour au Tableau de bord</a>
+         </div>
+         
+   
+<div class="container ">
+
+    <div class="row">
+        <div class="col-12">
+
+             <h2 class="text-center">Voir les images du Caroussel</h2>
+  <div class="row mx-auto">
+          <div class="col-2 mx-auto"><a href="{{ path('create_caroussel') }}" class="btn btn-primary">Ajouter une image</a>
+        </div>
+     <div class="col-4"><a href="{{ path('caroussel_trash') }}" class="btn btn-warning"><i class="fa fa-trash"></i> Voir les archives</a> 
+    </div>
+   
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Photo</th>
+                    <th>Créé le</th>
+                    <th>Modifié le</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for caroussel in caroussels %}
+                    <tr>
+                        <td>{{ caroussel.id }}</td>
+                         <td> 
+
+                            {% if (caroussel.photo) %}
+                                                              <ul class="list-inline">
+                                                                  <li class="list-inline-item">
+                                                                       <img src="{{ asset('slider/' ~ caroussel.photo) }}" alt=" " width="100" height="100" class="img-fluid rounded ">
+                                                                  </li>
+                                                                  {% else %}
+                                                                   <li class="list-inline-item">
+                                                                       <img src="{{ asset('slider/avatar.png') }}" width="100" height="100"  alt="" class="img-fluid rounded">      
+                                                                   </li>
+                                                              </ul>
+                               {% endif %}
+                        </td>
+                        <td>{{ caroussel.createdAt | date('d/m/Y')}}</td>
+                        <td>{{ caroussel.updatedAt | date('d/m/Y')}}</td>
+              
+                        
+                             <td>
+                               
+                                {#<a href="#"class="text-info" title="Voir la photo" ><i class="fa-solid fa-eye"></i></a>#} 
+                                 <a href="{{ path('update_image_caroussel', {'id':caroussel.id}) }}" class="text-info" title="Modifier la photo"><i class="fa fa-edit"></i></a>
+                                 <a href="{{ path('soft_delete_caroussel_image', {'id':caroussel.id}) }}"
+                                   class="text-danger"
+                                   title="Archiver l'image"
+                                   onclick="return confirm('Voulez-vous archiver cette image?')">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                   
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+ </div>
+     
+
+{% endblock %}

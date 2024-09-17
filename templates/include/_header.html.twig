@@ -1,0 +1,50 @@
+<div class="container-fluid">
+             <div class="row align-items-end">                                      
+                      <div class="col-12 col-md-12 col-lg-6 d-flex">   
+                             <a href="{{ path('app_home') }}"><img src="{{ asset('uploads/world3.png') }}"  class="img-fluid " style="width: 12rem;" alt="..."></a> 
+                               <div class="container">
+                                <h1 class="fs-5 fw-bold" style="color:#634038!important;">Association Saint-Thomas Diaspora (A.S.T.D)</h1> 
+                                  <h3 class="fs-6" style="color:#cc4f38!important;">Ensemble, construisons un monde sans faim</h3> 
+                               </div>
+                      </div>
+
+                      <div class="col-12 col-md-12 col-lg-6 ">
+
+                         <ul class="list-inline text-end">
+                               {% if is_granted("ROLE_ADMIN") %}  
+                               <li class=" list-inline-item">
+                                  <a class="nav-link fw-bold"  href="{{ path('dashboard') }}" style="color:#cc4f38;"> Espace Admin </a>
+                               </li>
+                                {% endif %}
+
+                               {% if app.user %} 
+                              <li class="list-inline-item">
+                                  <a class="nav-link" style="color:#634038!important;" id="nav-link1" href="{{ path('app_profile', {'id': app.user.id}) }}"><i class="fa fa-user"></i>Mon Profil</a>
+                              </li>
+                                    {% if (app.user.photo ) %}  
+                              <li class="list-inline-item "> 
+                                  <a href="{{ path('update_photo_profil', {'id':app.user.id}) }}" title="MODIFIER LA PHOTO DE  PROFIL" class="col-sm-3"> <img src="{{ asset('uploads/' ~ app.user.photo) }}" class="img-fluid" style="width: 4rem;border-radius: 20px;"></a>
+
+                                   {% else %}  
+                                   <a  class="btn"  href="{{ path('add_photo_profil', {'id': app.user.id}) }}" title="MODIFIER LA PHOTO DE  PROFIL"><img src="{{ asset('uploads/avatar.png') }}"  class="img-fluid " style="width: 3rem;border-radius: 20px;" title="AJOUTER  UNE PHOTO"></a>    
+                                  
+                              </li>
+                                    {% endif %} 
+
+                              <li class="list-inline-item me-2">
+                                    <a class="logout fs-6 text-decoration-none border" style="color:#634038!important;" id="logout" href="{{ path('app_logout') }}" onclick="return confirm('Souhaiter-vous vous déconnecter?')"><i class="fa-solid fa-right-from-bracket"></i>Se déconnecter</a>   
+                              </li>
+                             {% else %}
+                              <li class="list-inline-item">
+                                  <a class="btn btn-register col" href="{{ path('app_register') }}"><i class="fa-solid fa-user-plus mx-1"></i>S'inscrire</a> 
+                                  <a class="btn btn-login col" href="{{ path('app_login') }}"><i class="fa-solid fa-user"></i> Espace membre</a>
+                              </li>
+                               {% endif %}   
+                        </ul> 
+                 </div>
+
+             </div> {#fin row #}  
+
+       </div>    
+
+       <!--FIN HEADER-->

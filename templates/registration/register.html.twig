@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+       
+
+
+       <div class="container-fluid ">
+                   
+                   <div class="row">
+                            {% for flash_error in app.flashes('verify_email_error') %}
+                              <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
+                    </div>
+                   
+                            
+                    <div class="row py-3">
+                       
+                          <div class="col-12 d-flex justify-content-center"> 
+                                  {{ form_start(registrationForm, {'attr': {'class': 'col-sm-9 col-md-6 col-lg-4 register p-3'}}) }}
+                                     <h1 class="h3 font-weight-normal text-center text-header ">S'inscrire</h1>
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.lastname) }}</div>   
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.firstname) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.email) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.phone) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.plainPassword) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.genre) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.country) }}</div> 
+                                     <div class="row"> 
+                                          <div class="col-5 col-md-5 col-lg-5"> {{ form_row(registrationForm.numberstreet) }} </div> 
+                                           <div class="col-7 col-md-7 col-lg-7">{{ form_row(registrationForm.zipcode) }} </div> 
+                                     </div> 
+                                   
+                                     <div class="col-12 col-md-12 col-lg-12">  {{ form_row(registrationForm.adress, {'attr': {'class': ''}}) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.city) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12"> {{ form_row(registrationForm.agreeTerms) }}</div> 
+                                     <div class="col-12 col-md-12 col-lg-12">
+                                           <button type="submit" class="btn col-sm-12 col-md-9 col-lg-12 white" id="btn-banner" type="submit" formnovalidate>
+                                                   Soumettre
+                                            </button>
+                                      </div> 
+                                     <div class="col-12 col-md-12 col-lg-12">
+                                        Avez-vous déja un compte? <a href="{{ path('app_login') }}" class="text-muted">Se connecter maintenant</a>
+                                       </div>  
+                                  
+                                 {{ form_end(registrationForm) }}  
+                          </div>
+                    </div>
+                          
+                          
+                         
+       </div>
+ 
+
+
+   
+   
+   
+  
+{% endblock %}
+   
+     
+ 
+
+  
