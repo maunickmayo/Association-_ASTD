@@ -117,9 +117,7 @@ class CategoryController extends AbstractController
      * @Route("/voir-les-categories-archives", name="category_trash", methods={"GET"})
      */
     public function showTrashCategory(EntityManagerInterface $entityManager): Response
-    {    // (Article $article) on les recuo deouis la bdd et non des independances
-        // slide (on l app ascensseur, gitignore /public/uploads/) 
-       // show trash pareil que show dasboard juste ceux qui ont été archivés
+    { 
         $archivedCategories = $entityManager->getRepository(Category::class)->findByTrash();
 
         return $this->render("admin/trash/category_trash.html.twig", [
