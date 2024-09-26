@@ -67,8 +67,4 @@ class PaymentController extends AbstractController
     }
 
 
-
-
-
-
 }
