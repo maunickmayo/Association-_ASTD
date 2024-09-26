@@ -27,7 +27,6 @@ class CarousselController extends AbstractController
      public function CreateCaroussel(Request $request, EntityManagerInterface $entitymanager, SluggerInterface $slugger): Response
      {
 
-       // bloquer l'entrée des users excepté l'admin
        try {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         } catch (AccessDeniedException $exception) {
@@ -38,7 +37,7 @@ class CarousselController extends AbstractController
          $caroussel = new Caroussel();
         
          $form = $this->createForm(CarousselFormType::class, $caroussel);
-         $form->handleRequest($request); // method récupère ttes les données depuis la requete (si cest "POST", si ceest GET elle ne fait tien)
+         $form->handleRequest($request); 
 
          if ($form->isSubmitted() && $form->isValid()) {
 
@@ -48,8 +47,6 @@ class CarousselController extends AbstractController
          /** @var UploadedFile $photo */
          $photo = $form->get('photo')->getData();
        
-             // this condition is needed because the 'brochure' field is not required
-              // so the Imagefile must be processed only when a file is uploaded
                if ($photo) {
                
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
@@ -67,8 +64,6 @@ class CarousselController extends AbstractController
                 // ... handle exception if something happens during file upload
                 }
 
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
                 $caroussel->setPhoto($newFilename);
                 }
                 $entitymanager->persist($caroussel);
@@ -120,14 +115,14 @@ class CarousselController extends AbstractController
             /** @var UploadedFile $photo */
             $photo = $form->get('photo')->getData();
 
-            # Si une photo a été uploadée dans le formulaire on va faire le traitement nécessaire à son stockage dans notre projet.
+           
             if($photo) {
 
                 # Déconstructioon
                 $extension = '.' . $photo->guessExtension();
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-//                $safeFilename = $article->getAlias();
+
 
                 # Reconstruction
                 $newFilename = $safeFilename . '_' . uniqid() . $extension;
@@ -139,12 +134,9 @@ class CarousselController extends AbstractController
                 catch(FileException $exception) {
                     # Code à exécuter en cas d'erreur.
                 }
-            //} else {
-                //$article->setPhoto($originalPhoto); // on a du ajouter qlques par dans le form pour entrer ds le else lors de l'edition pour ne pas avoir d'erreurs.
             } # end if($photo)
 
         
-
             $entitymanager->persist($caroussel);
             $entitymanager->flush();
 
@@ -196,9 +188,7 @@ class CarousselController extends AbstractController
     * @Route("/espace-admin/voir-les-images-archives", name="caroussel_trash", methods={"GET"})
     */
     public function showTrashCaroussel(EntityManagerInterface $entitymanager): Response
-    {    // (Caroussel $caroussel) on les recuo deouis la bdd et non des independances
-        // slide (on l app ascensseur, gitignore /public/uploads/) 
-       // show trash pareil que show dasboard juste ceux qui ont été archivés
+    { 
        $archivedCaroussels = $entitymanager->getRepository(Caroussel::class)->findByTrash();
 
         return $this->render("admin/trash/caroussel_trash.html.twig", [
@@ -206,19 +196,15 @@ class CarousselController extends AbstractController
         ]);
     }
 
-
     /**
     * @Route("/espace-admin/supprimer-caroussel-image-{id}", name="hard_delete_caroussel_image", methods={"GET"})
     */
     public function hardDeleteCarousselImage(Caroussel $caroussel, EntityManagerInterface $entitymanager): RedirectResponse
     {
-        // Suppression manuelle de la photo
         $photo = $caroussel->getPhoto();
 
-        // On utilise la fonction native de PHP unlink() pour supprimer un fichier dans le filesystem(système de fichiers).
         if($photo) {
           unlink($this->getParameter('slider_dir'). '/' . $photo); 
-            // pour supprimer en PHP unset -> variables et unlink ->fichiers.
         }
 
         $entitymanager->remove($caroussel);
@@ -227,7 +213,4 @@ class CarousselController extends AbstractController
         $this->addFlash('message', "La photo bien été supprimé de la base de données");
         return $this->redirectToRoute('caroussel_trash');
     }
-    
-  
-
-  } 
+ } 
