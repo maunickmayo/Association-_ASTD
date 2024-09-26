@@ -39,9 +39,7 @@ class AdminController extends AbstractController
             $this->addFlash('message', 'Cette partie du site est réservée aux admins');
             return $this->redirectToRoute('app_home');
         }  
-        //------------------------------------------
-      
-      // si je mets ->findAll() ça me listera les memebres supprimés et n'effacera pas user sur la liste tut en l'archivant. donc c est findBy(['deletedAt' => null])
+        est findBy(['deletedAt' => null])
       return $this->render('admin/espaceAdmin.html.twig');
       
     }#END FUNCTION Dashboard
@@ -58,9 +56,9 @@ class AdminController extends AbstractController
             $this->addFlash('message', 'Cette partie du site est réservée aux admins');
             return $this->redirectToRoute('app_home');
         }  
-        //------------------------------------------
+    
       $users = $entitymanager->getRepository(User::class)->findBy(['deletedAt' => null]);
-      // si je mets ->findAll() ça me listera les memebres supprimés et n'effacera pas user sur la liste tut en l'archivant. donc c est findBy(['deletedAt' => null])
+    
       return $this->render('user/users_list.html.twig', [
        'users' => $users,
       ]);
@@ -113,8 +111,8 @@ class AdminController extends AbstractController
         $form->handlerequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-     // si le formulaire a été envoyé et valide, isValid (booléen) va aller voir s'il y'a des erreurs.
-            $user->setUpdatedAt(new DateTime()); // pr que la date de modification soit differente de celle de creation.
+ 
+            $user->setUpdatedAt(new DateTime()); 
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -170,10 +168,9 @@ class AdminController extends AbstractController
          // Suppression manuelle de la photo
          $photo = $user->getPhoto();
 
-         // On utilise la fonction native de PHP unlink() pour supprimer un fichier dans le filesystem(système de fichiers).
+       
          if($photo) {
              unlink($this->getParameter('uploads_dir'). '/' . $photo); 
-             // pour supprimer en PHP unset -> variables et unlink ->fichiers.
          }
        
         $entityManager->remove($user);
@@ -188,9 +185,7 @@ class AdminController extends AbstractController
      * @Route("/espace-admin/voir-les-membres-archives", name="user_trash", methods={"GET"})
      */
      public function showTrashUser(EntityManagerInterface $entityManager): Response
-     {    // (Article $article) on les recuo deouis la bdd et non des independances
-       // slide (on l app ascensseur, gitignore /public/uploads/) 
-      // show trash pareil que show dasboard juste ceux qui ont été archivés
+     { 
        $archivedusers = $entityManager->getRepository(User::class)->findByTrash();
        
        return $this->render("admin/trash/user_trash.html.twig", [
@@ -215,21 +210,20 @@ class AdminController extends AbstractController
             $article->setCreatedAt(new DateTime());
             $article->setUpdatedAt(new DateTime());
 
-            # L'alias sera utilisé dans l'url (comme FranceTvInfo) et donc doit être assaini de tout accents et espaces.
             $article->setAlias($slugger->slug($article->getTitle()));
 
             /** @var UploadedFile $photo */
             $photo = $form->get('photo')->getData();
 
-            # Si une photo a été uploadée dans le formulaire on va faire le traitement nécessaire à son stockage dans notre projet.
+          .
             if($photo) {
                 # Déconstructioon
                 $extension = '.' . $photo->guessExtension();
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-//                $safeFilename = $article->getAlias();
+                $safeFilename = $article->getAlias();
 
-                # Reconstruction
+
                 $newFilename = $safeFilename . '_' . uniqid() . $extension;
 
                 try {
@@ -245,10 +239,9 @@ class AdminController extends AbstractController
 
                 # Ajout d'un auteur à l'article (User récupéré depuis la session)
                 $article->setAuthor($this->getUser());
-               //L'Entity Manager fait donc le lien entre les "Entités", qui sont de simples objets PHP, et la base de données
-                $entityManager->persist($article); // données persistantes,à l'aide de la fonction persist, il ajoute l'objet manipulé dans l'Unit of Work ;
-                $entityManager->flush(); // chasse d'eau => insère les données dans la BDD. La synchronisation en base ne s'effectue que quand on exécute la méthode "flush" et est effectuée sous forme d'une transaction qui est annulée en cas d'échec.
 
+                $entityManager->persist($article);
+                $entityManager->flush(); 
                 $this->addFlash('message', "L'article est en ligne avec succès !");
                 return $this->redirectToRoute('articles_list');
 
@@ -273,10 +266,9 @@ class AdminController extends AbstractController
            $this->addFlash('message', 'Cette partie du site est réservée aux admins');
            return $this->redirectToRoute('app_home');
        }  
-       //------------------------------------------
+
        $articles = $entityManager->getRepository(Article::class)->findBy(['deletedAt' => null]);
-     // si je mets ->findAll() ça me listera les memebres supprimés et n'effacera pas user sur la liste tut en l'archivant. donc c est findBy(['deletedAt' => null])
-     return $this->render('article/articles_list.html.twig', [
+          return $this->render('article/articles_list.html.twig', [
        'articles' => $articles,
      ]);
      
@@ -286,8 +278,7 @@ class AdminController extends AbstractController
     */
     public function updateArticle(Article $article, Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {  
-        # cette sera route accéssible en GET et POST  d'où la méthode (methods={"GET|POST"})
-        # gestion de la photo
+    
         $originalPhoto = $article->getPhoto();
 
         # 2 - Création du formulaire
@@ -300,33 +291,30 @@ class AdminController extends AbstractController
 
             $article->setUpdatedAt(new DateTime());
 
-            # L'alias sera utilisé dans l'url (comme FranceTvInfo) et donc doit être assaini de tout accents et espaces.
             $article->setAlias($slugger->slug($article->getTitle()));
 
             /** @var UploadedFile $photo */
             $photo = $form->get('photo')->getData();
 
-            # Si une photo a été uploadée dans le formulaire on va faire le traitement nécessaire à son stockage dans notre projet.
             if($photo) {
 
                 # Déconstructioon
                 $extension = '.' . $photo->guessExtension();
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-//                $safeFilename = $article->getAlias();
+          $safeFilename = $article->getAlias();
 
                 # Reconstruction
                 $newFilename = $safeFilename . '_' . uniqid() . $extension;
 
                 try {
-                    $photo->move($this->getParameter('uploads_dir'), $newFilename);// uploads_dir'=> est le path de l'image.
+                    $photo->move($this->getParameter('uploads_dir'), $newFilename);
                     $article->setPhoto($newFilename);
                 }
                 catch(FileException $exception) {
                     # Code à exécuter en cas d'erreur.
                 }
-            //} else {
-                //$article->setPhoto($originalPhoto); // on a du ajouter qlques par dans le form pour entrer ds le else lors de l'edition pour ne pas avoir d'erreurs.
+
             } # end if($photo)
 
             # Ajout d'un auteur à l'article (User récupéré depuis la session)
@@ -384,10 +372,9 @@ class AdminController extends AbstractController
         // Suppression manuelle de la photo
         $photo = $article->getPhoto();
 
-        // On utilise la fonction native de PHP unlink() pour supprimer un fichier dans le filesystem(système de fichiers).
+
         if($photo) {
             unlink($this->getParameter('uploads_dir'). '/' . $photo); 
-            // pour supprimer en PHP unset -> variables et unlink ->fichiers.
         }
 
         $entityManager->remove($article);
@@ -401,9 +388,7 @@ class AdminController extends AbstractController
     * @Route("/espace-admin/voir-les-articles-archives", name="article_trash", methods={"GET"})
     */
     public function showTrashArticles(EntityManagerInterface $entityManager): Response
-    {    // (Article $article) on les recuo deouis la bdd et non des independances
-        // slide (on l app ascensseur, gitignore /public/uploads/) 
-       // show trash pareil que show dasboard juste ceux qui ont été archivés
+    {   
         $archivedArticles = $entityManager->getRepository(Article::class)->findByTrash();
 
         return $this->render("admin/trash/article_trash.html.twig", [
@@ -416,57 +401,20 @@ class AdminController extends AbstractController
      */
      public function showCategory(EntityManagerInterface $entityManager): Response
      {  
-       // bloquer l'entrée des users excepté l'admin
+
        try {
            $this->denyAccessUnlessGranted('ROLE_ADMIN');
        } catch (AccessDeniedException $exception) {
            $this->addFlash('message', 'Cette partie du site est réservée aux admins');
            return $this->redirectToRoute('app_home');
        }  
-       //------------------------------------------
+   
        $categories = $entityManager->getRepository(Category::class)->findBy(['deletedAt' => null]);
-     // si je mets ->findAll() ça me listera les memebres supprimés et n'effacera pas user sur la liste tut en l'archivant. donc c est findBy(['deletedAt' => null])
-     return $this->render('category/category_list.html.twig', [
-       'categories' => $categories,
+              return $this->render('category/category_list.html.twig', [
+               'categories' => $categories,
      ]);
      
      }#END FUNCTION Show Category
 
-   
-   
-    
-    /**
-     * @Route("/ajouter-un-membre", name="create_user", methods={"GET|POST"})
-     */
-   /*
-    public function createUser(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
-    {
-        $user = New User;
-
-        $form = $this->createForm(RegistrationFormType::class, $user)
-        ->handlerequest($request);
-
-             if($form->isSubmitted() && $form->isValid()) {
-                $user->setRoles(['ROLE_USER']);
-                $user->setCreatedAt(new DateTime());
-                $user->setUpdatedAt(new DateTime());
-                //On setUpdatedAt parce que tres svt on va afficher ds l espace perso ou profil la derniere date de modif, donc si c est pas modifié ça sera la meme valeur que  la date de création.
-                $user->setPassword($passwordHasher->hashPassword($user,$form->get('PlainPassword')->getData()));
-                            // ici on a pas besoin de getData() vu qu il a ete auto hydraté, c est plus rapide a ecrire.
- 
-                $entityManager->persist($user);
-                $entityManager->flush();
-                           // success et le second ; le message.
-                $this->addFlash('success', "Membre ajouté avec succès !");
-                return $this->redirectToRoute('users_list');   
-            }#END IF
-
-        return $this->render('admin/form/membre.html.twig', [
-            'form' => $form->createView()
-        ]);
-
-
-        
-    }#END FUNCTION createMembre  */
 
 }
