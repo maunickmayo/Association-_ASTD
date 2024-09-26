@@ -97,35 +97,4 @@ class RegistrationController extends AbstractController
     }
 }
 
-          //  $photo = $form->get('photo')->getData();
-
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-           /* if ($photo) {
-                //-------------// et  tte cette partie c est pour creer le nom du fichier------------------
-                $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);// il cree un slug associé à l'original name, pour eviter les noms commens ds la BDD; le slug c est un service loader;
-                //uniqid() : un id unique qui sera genere au moment ou l'on appelle la méthode.
-                
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$photo->guessExtension();
-                                          
-                // Move the file to the directory where brochures are stored
-                 // il va aller copier le contenu temporaire du ficher qu'on va uploader pour aller le stocker qqlpart ds notre appli.
-                try {
-                    $photo->move(
-                        $this->getParameter('uploads_dir'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                  
-                    // ... handle exception if something happens during file upload
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                //et si tout se passe bien on lui passe le newfilename apres avoir pu l'uploader au niveau de notre appli.
-                $user->setPhoto($newFilename);
-            }*/
-
-          //$user->setPassword($passwordHasher->hashPassword($user, $user->getPassword() ));
+      
