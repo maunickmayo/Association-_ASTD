@@ -113,8 +113,6 @@ class CategoryController extends AbstractController
         return $this->redirectToRoute('category_trash');
     }
 
-
-
       /**
      * @Route("/voir-les-categories-archives", name="category_trash", methods={"GET"})
      */
