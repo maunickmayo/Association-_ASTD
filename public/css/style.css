@@ -34,9 +34,7 @@ body{
      color:rgb(204, 79, 56);
      background-color: white !important;
      font-weight: 500;
-     border-color: rgb(204, 79, 56) !important;
-   
-    /* background-color: #F0B27A ;*/     
+     border-color: rgb(204, 79, 56) !important;  
   }
 
 .btn-register:hover{
@@ -125,7 +123,6 @@ body{
 .my-navbar .btn-don {
      background-color:#cc4f38 !important;
      border-radius: 10px;
-    /* #f5d2b6;*/
    }
  
  .btn-info{
@@ -163,17 +160,10 @@ body{
 .my-navbar span a.btn-don:hover {
         color: #fff;
         background-color:transparent;
-       /* transition: background-color 3s;*/     
    }
    
-
-/*-------FIN NAVBAR-------------------------------------*/
-
-/*-------SECTION1---BANNER-------------------------------------*/
 .banner {
-   /*background: url('../slider/bannercover.png') center center fixed no-repeat;*/
    background: linear-gradient(rgba(22, 21, 21, 0.373), rgba(13, 12, 12, 0.197)), url('../uploads/bannercover.jpg');
-   /*l */
    background-repeat:no-repeat;
    background-attachment:fixed;
    background-size:cover;
@@ -222,42 +212,12 @@ body{
      color:#cc4e389f; 
 	background:#cc4e389f; 
 }
-/*-------FIN SECTION1---BANNER-------------------------------------*/
-
-
-     
-/*-------SECTION2--------------------------------------*/
-
 
 .card-section2{
      background-color:#634038!important;
      
 }
 
-
-/*------- section SLIDER------------ */
-
-
-
-/*-------SECTION4--------------------------------------*/
-/* .cc-menu {
-    background: url('../uploads/logo1.png') center center fixed no-repeat;
-     background-size:cover;
-     height: 40rem;
-     height: 100%;
-     width: 100%;
-  
-  }*/
-/*-------FIN SECTION 4--------------------------------------*/
-/*.article-menu{
-     background: linear-gradient( 90deg, #f8f4f0 100%, rgba(230,222,211,0.5) 100% );
-   
-
-}
-
-
-
-/*--------FOOTER-------*/
 footer{
      color: white !important;  
 }
@@ -312,7 +272,6 @@ footer{
     
 
 .banner {
-     /*background: url('../slider/bannercover.png') center center fixed no-repeat;*/
      background: linear-gradient(rgba(22, 21, 21, 0.161), rgba(13, 12, 12, 0.347)), url('../uploads/bannercover.jpg');
      background-repeat:no-repeat;
      background-attachment:initial;
@@ -322,7 +281,6 @@ footer{
      width: 100%;
   }
   
-
    
    }
 
