@@ -18,8 +18,7 @@ class DefaultController extends AbstractController
     public function home(EntityManagerInterface $entitymanager): Response
     {   
         $articles = $entitymanager->getRepository(Article::class)->findBy(['deletedAt' => null]);
-        //à l'aide de la fonction find(), il retrouve et hydrate un objet à partir d'informations retrouvées en base ;
-
+    
         return $this->render('default/home.html.twig', [
             'articles' => $articles
         ]);
@@ -123,16 +122,6 @@ class DefaultController extends AbstractController
         return $this->render('pages/insalubrite.html.twig');
     }
     
-    
-    
-    
-
-
-
-
-
-
-
 }
 
 
