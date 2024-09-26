@@ -28,7 +28,6 @@ class ArticleController extends AbstractController
      */
      public function showArticlesFromCategory(Category $category, EntityManagerInterface $entityManager): Response
      {
-        // NB:lorsqu'on met {alias} a la route voir-article symfony va déviner que c 'est l'alias dans la catégorie, puisque qu'on a indentiqué en premier parametre Category dans l'injection des indépendances.et lorsque nous allons appeler la route dans la nv il faudra qu'on mette l'alias et non la route.
        $articles = $entityManager->getRepository(Article::class)->findBy([ 
         'category' => $category->getId(),
         'deletedAt' => null 
@@ -38,10 +37,6 @@ class ArticleController extends AbstractController
             'articles' => $articles,
             'category' => $category
         ]);
-        /*syntaxe alternative 
-  
-    return $this->render("article/show_articles_from_category.html.twig", compact('articles', 'category'));
-        */
     }
 
 
