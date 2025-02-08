@@ -87,7 +87,6 @@ class CarousselController extends AbstractController
      
        //------------------------------------------
        $caroussels = $entitymanager->getRepository(Caroussel::class)->findBy(['deletedAt' => null]);
-     // si je mets ->findAll() ça me listera les memebres supprimés et n'effacera pas user sur la liste tut en l'archivant. donc c est findBy(['deletedAt' => null])
      return $this->render('caroussel/caroussel_list.html.twig', [
        'caroussels' => $caroussels,
        
